@@ -1,22 +1,41 @@
 <html>
-    <head>
-        <link rel='stylesheet' href='styles.css'/>
-    </head>
-    <body>
-        <h1>Acme Customers VIP</h1>
-        <main>
-            <div>
-                moe Joined on 1/1/2019
-            </div>
-            <div>
-                larry Joined on 3/15/2018
-            </div>
-            <div>
-                shep Joined on 6/15/2019
-            </div>
-            <div class='vip-outer-box'>
-                VIP <div class='vip-box'></div>
-            </div>
-        </main>
-    </body>
+  <head>
+      <link rel='stylesheet' href='styles.css'/>
+  </head>
+  <body>
+    <h1>Acme Customers VIP</h1>
+    <ul id='customers'>
+    </ul>
+    <div id='legend'>
+      <label>VIP</label>
+      <div id='vip-swatch'></div>
+    </div>
+
+  <script>
+      const customers = [
+      { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true, dateJoined: '07/05/2018'},
+      { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com', dateJoined: '01/01/2019'},
+      { id: 4, name: 'shep', email: 'shep@gmail.com', dateJoined: '03/19/2000'},
+     ];
+
+
+    const list = document.querySelector('#customers');
+
+
+    const render = ()=> {
+      let html = customers.map( customer => {
+        return `
+          <li class='${ customer.isVIP ? 'vip': ''}'>
+            ${ customer.name } Joined On ${ customer.dateJoined }
+          </li>
+        `;
+      }).join('');
+      list.innerHTML = html;
+    };
+
+
+    render();
+  </script>
+
+  </body>
 </html>
