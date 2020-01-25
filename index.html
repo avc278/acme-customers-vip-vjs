@@ -6,13 +6,21 @@
 
 <body>
     <h1>Acme Customers VIP</h1>
+    <form>
+        <input name='customerName' placeholder='enter name'/>
+        <input name='dateAdded' placeholder='enter date'/>
+        <div class='vip'>
+            <label>VIP</label>
+            <input name='vip-checkbox' type='checkbox'></input>
+        </div>
+        <button>Create</button>
+    </form>
     <ul id='customers'>
     </ul>
     <div id='legend'>
         <label>VIP</label>
         <div id='vip-swatch'></div>
     </div>
-
     <script>
         const customers = [{
             id: 1,
@@ -39,10 +47,26 @@
         });
 
         customers.sort((a, b) => {
-            a.dateJoined - b.dateJoined;
-        })
+            return b.dateJoined - a.dateJoined
+        });
+        
 
         const list = document.querySelector('#customers');
+        const form = document.querySelector('form');
+        const createButton = form.querySelector('button');
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            const name = form.querySelector("[name='customerName']");
+            const date = form.querySelector("[name='dateAdded']");
+            const isVIP = form.querySelector("[name='vip-checkbox']");
+
+            
+            customers.push({name: name.value, isVIP: isVIP.checked, dateJoined: new Date(date.value)});
+            customers.sort((a, b) => {
+                return b.dateJoined - a.dateJoined
+            });
+            render();
+        });
 
         const render = () => {
             let html = customers.map(customer => {
