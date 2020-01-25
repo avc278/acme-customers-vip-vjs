@@ -1,68 +1,71 @@
 body {
     font-family: sans-serif;
-  }
+}
 
 form {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  margin: 0 20%;
-
-  justify-content: center;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 0 30%;
+    justify-content: center;
 }
 
 form input {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
-input, button {
-  height: 3rem;
+input,
+button {
+    height: 3rem;
+}
+
+.valid-data li {
+    color: red;
 }
 
 .vip {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
-.vip > * {
-  margin: 1rem 5px;
+.vip>* {
+    margin: 1rem 5px;
 }
 
 label {
-  display: flex;
+    display: flex;
 }
 
 #customers {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
-
 #customers li {
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background-color: linen;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: linen;
 }
 
 #customers li.vip {
-  background-color: seaGreen;
-  color: white;
+    background-color: seaGreen;
+    color: white;
 }
 
 #legend {
-  border: solid 1px black;
-  display: flex;
-  align-items: center;
-  width: 200px;
+    border: solid 1px black;
+    display: flex;
+    align-items: center;
+    width: 200px;
 }
 
-#legend > * {
-  margin: 1rem;
+#legend>* {
+    margin: 1rem;
 }
 
 #vip-swatch {
-  background-color: seaGreen;
-  width: 50px;
-  height: 50px;
+    background-color: seaGreen;
+    width: 50px;
+    height: 50px;
 }

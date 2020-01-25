@@ -7,16 +7,16 @@
 <body>
     <h1>Acme Customers VIP</h1>
     <form>
-        <input name='customerName' placeholder='enter name'/>
-        <input name='dateAdded' placeholder='enter date'/>
+        <ul class='valid-data'></ul>
+        <input name='customerName' placeholder='enter name' />
+        <input name='dateAdded' placeholder='enter date' />
         <div class='vip'>
             <label>VIP</label>
             <input name='vip-checkbox' type='checkbox'></input>
         </div>
         <button>Create</button>
     </form>
-    <ul id='customers'>
-    </ul>
+    <ul id='customers'></ul>
     <div id='legend'>
         <label>VIP</label>
         <div id='vip-swatch'></div>
@@ -49,19 +49,40 @@
         customers.sort((a, b) => {
             return b.dateJoined - a.dateJoined
         });
-        
+
 
         const list = document.querySelector('#customers');
         const form = document.querySelector('form');
         const createButton = form.querySelector('button');
+
         form.addEventListener('submit', (ev) => {
             ev.preventDefault();
             const name = form.querySelector("[name='customerName']");
             const date = form.querySelector("[name='dateAdded']");
             const isVIP = form.querySelector("[name='vip-checkbox']");
+            const validData = form.querySelector('ul')
 
-            
-            customers.push({name: name.value, isVIP: isVIP.checked, dateJoined: new Date(date.value)});
+            let validName = true;
+            let validDate = true;
+            let invalidText = '';
+            if (!name.value) {
+                validName = false;
+                invalidText += `<li>name required</li>`
+            }
+            if (!date.value) {
+                validDate = false;
+                invalidText += `<li>please enter valid date</li>`
+            }
+            if (!validName || !validDate) {
+                validData.innerHTML = invalidText;
+                return;
+            }
+
+            customers.push({
+                name: name.value,
+                isVIP: isVIP.checked,
+                dateJoined: new Date(date.value)
+            });
             customers.sort((a, b) => {
                 return b.dateJoined - a.dateJoined
             });
